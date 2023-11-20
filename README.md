@@ -20,7 +20,7 @@ git clone https://github.com/briana-torres/StudyBuddies.git
 
 2. Navigate to the project directory:
 ```bash
-cd studybuddies
+cd project-directory-location
 ```
 
 3. Install the necessary `npm` packages:
@@ -39,6 +39,11 @@ npm install @mui/icons-material
 ```
 
 ### Running the Application
+
+Navigate to the website directory:
+```bash
+cd website
+```
 
 To start the application, run the following command in the terminal:
 ```bash
