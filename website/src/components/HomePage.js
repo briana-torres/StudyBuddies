@@ -12,6 +12,14 @@ const HomePage = () => {
       history.push('/profile'); 
     };
 
+    const navigateToFindGroups = () => {
+        history.push('/find-groups');
+    };
+
+    const navigateToMyGroups = () => {
+        history.push('/my-groups');
+    };
+
   return (
     <Box sx={{ p: 4, height: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header box with the icon on the right */}
@@ -19,7 +27,7 @@ const HomePage = () => {
         <Typography variant="h2" component="h1" gutterBottom>
           Study Buddies
         </Typography>
-        <IconButton onClick={handleProfileClick} sx={{ position: 'absolute', top: 30, right: 25 }}>
+        <IconButton onClick={handleProfileClick} sx={{ position: 'absolute', top: 40, right: 60 }}>
           <AccountCircleIcon fontSize="large" />
         </IconButton>
       </Box>
@@ -30,10 +38,10 @@ const HomePage = () => {
       {/* Main content container */}
       <Container maxWidth="md" sx={{ flexGrow: 0.5, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <Stack direction="row" spacing={10} justifyContent="center" alignItems="flex-start">
-          <Stack direction="column" spacing={3}>
-            <GroupButton title="Find Groups" />
-            <GroupButton title="My Groups" />
-          </Stack>
+            <Stack direction="column" spacing={3}>
+             <GroupButton title="Find Groups" onClick={navigateToFindGroups} />
+             <GroupButton title="My Groups" onClick={navigateToMyGroups}/>
+            </Stack>
           <PastSessions />
         </Stack>
       </Container>
