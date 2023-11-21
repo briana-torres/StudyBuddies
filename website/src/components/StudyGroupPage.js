@@ -24,7 +24,6 @@ const StudyGroupPage = () => {
           <Typography>Course: CS 3500 OOD</Typography>
         </Grid>
         <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
-          {/* This is column B: Join button */}
           <Button 
             sx={{ my: 2, py: 2, fontSize: '2rem', width: '200px', textTransform: 'none' }} 
             variant="contained" 

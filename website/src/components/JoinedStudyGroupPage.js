@@ -19,8 +19,8 @@ const JoinedStudyGroupPage = () => {
         <Grid item xs={12} sm={6} md={4}>
           <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <Typography variant="h4" component="h2" gutterBottom>Details</Typography>
-            <Typography>Description: 2nd Year Study Group for OOD</Typography>
-            <Typography>Course: CS 3500 OOD</Typography>
+            <Typography>Description: Freshman Study Group for MDM</Typography>
+            <Typography>Course: CS 2810 Mathematical Data Models</Typography>
             <Typography>Members: John, Rachel</Typography>
           </Box>
         </Grid>

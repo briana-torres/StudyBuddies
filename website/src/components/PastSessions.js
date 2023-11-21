@@ -10,7 +10,7 @@ const PastSessions = () => {
   const history = useHistory();
 
   const handleSessionClick = (session) => {
-    history.push('/joined-study-group');
+    history.push('/study-session');
   };
 
   return (
