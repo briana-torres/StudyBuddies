@@ -24,7 +24,7 @@ const HomePage = () => {
     <Box sx={{ p: 4, height: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header box with the icon on the right */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 0 }}>
-        <Typography variant="h2" component="h1" gutterBottom>
+        <Typography variant="h2" component="h1" gutterBottom sx={{ flexGrow: 1, textAlign: 'center' }}>
           Study Buddies
         </Typography>
         <IconButton onClick={handleProfileClick} sx={{ position: 'absolute', top: 40, right: 60 }}>
@@ -32,7 +32,7 @@ const HomePage = () => {
         </IconButton>
       </Box>
       {/* Subheader text */}
-      <Typography variant="h5" component="h2" gutterBottom sx={{ textAlign: 'left', mb: 4 }}>
+      <Typography variant="h5" component="h2" gutterBottom sx={{ textAlign: 'center', mt: 0 }}>
         Welcome to your Dashboard!
       </Typography>
       {/* Main content container */}

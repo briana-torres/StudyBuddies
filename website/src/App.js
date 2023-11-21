@@ -8,6 +8,7 @@ import StudyGroupPage from './components/StudyGroupPage';
 import JoinedSuccessPage from './components/JoinedSuccessPage';
 import CreateGroupPage from './components/CreateGroupPage';
 import CreatedSuccessPage from './components/CreatedSuccessPage';
+import JoinedStudyGroupPage from './components/JoinedStudyGroupPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/joined-success" component={JoinedSuccessPage} />
         <Route path="/create-group" component={CreateGroupPage} />
         <Route path="/created-success" component={CreatedSuccessPage} />
+        <Route path="/joined-study-group" component={JoinedStudyGroupPage} />
       </Switch>
     </Router>
   );

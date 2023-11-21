@@ -2,11 +2,7 @@ import React from 'react';
 import { List, ListItem, ListItemText, Paper, Typography, Box } from '@mui/material';
 
 const sessions = [
-  { id: 1, title: 'CS 2810 MM', date: '10/10/2023', duration: '30min' },
-  { id: 2, title: 'CS 2810 MM', date: '10/10/2023', duration: '30min' },
-  { id: 3, title: 'CS 2810 MM', date: '10/10/2023', duration: '30min' },
-  { id: 4, title: 'CS 2810 MM', date: '10/10/2023', duration: '30min' },
-  // ... more sessions
+  { id: 1, title: 'CS 2810 Study Group', date: '10/10/2023', duration: '30min' },
 ];
 
 const PastSessions = () => {

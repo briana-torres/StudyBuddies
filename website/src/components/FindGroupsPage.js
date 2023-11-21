@@ -10,12 +10,13 @@ const FindGroupsPage = () => {
     { name: 'CS 2810 Study Group', id: 1 },
     { name: 'Fundies II', id: 2 },
     { name: 'CS 3500 OOD', id: 3 },
-    // ... add more study groups here
   ];
 
   const handleGroupClick = (groupId) => {
     if (groupId === 3) {
       history.push(`/study-group`);
+    } if (groupId === 1) {
+      history.push(`/joined-study-group`);
     } else {
       console.log('clicked');
     }

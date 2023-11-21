@@ -33,7 +33,7 @@ const CreateGroupPage = () => {
         <Box component="form" sx={{'& > :not(style)': { m: 1 } }}>
           <TextField label="Group Name" variant="outlined" fullWidth />
           <TextField label="Description" variant="outlined" fullWidth />
-          <TextField label="Class" variant="outlined" fullWidth />
+          <TextField label="Course" variant="outlined" fullWidth />
           {/* ... add more fields as needed for group creation */}
         </Box>
       </Container>
