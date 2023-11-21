@@ -9,7 +9,7 @@ const JoinedStudyGroupPage = () => {
   const groupName = 'CS 2810 Study Group';
 
   const handleLaunchStudyBuddy = () => {
-    history.push('/create-group');
+    history.push('/launch-study-buddy');
   };
 
   return (

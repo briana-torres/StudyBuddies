@@ -9,6 +9,9 @@ import JoinedSuccessPage from './components/JoinedSuccessPage';
 import CreateGroupPage from './components/CreateGroupPage';
 import CreatedSuccessPage from './components/CreatedSuccessPage';
 import JoinedStudyGroupPage from './components/JoinedStudyGroupPage';
+import StudySessionPage from './components/StudySessionPage';
+import LaunchStudyBuddyPage from './components/LaunchStudyBuddyPage';
+import LaunchSuccessPage from './components/LaunchSuccessPage';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
         <Route path="/create-group" component={CreateGroupPage} />
         <Route path="/created-success" component={CreatedSuccessPage} />
         <Route path="/joined-study-group" component={JoinedStudyGroupPage} />
+        <Route path="/study-session" component={StudySessionPage} />
+        <Route path="/launch-study-buddy" component={LaunchStudyBuddyPage} />
+        <Route path="/launch-success" component={LaunchSuccessPage} />
       </Switch>
     </Router>
   );

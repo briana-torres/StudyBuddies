@@ -1,13 +1,16 @@
 import React from 'react';
 import { List, ListItem, ListItemText, Paper, Typography, Box } from '@mui/material';
+import { useHistory } from 'react-router-dom';
 
 const sessions = [
   { id: 1, title: 'CS 2810 Study Group', date: '10/10/2023', duration: '30min' },
 ];
 
 const PastSessions = () => {
+  const history = useHistory();
+
   const handleSessionClick = (session) => {
-    console.log('Session clicked:', session);
+    history.push('/joined-study-group');
   };
 
   return (
