@@ -1,10 +1,16 @@
 import React from 'react';
-import { Box, Typography, Grid, Paper } from '@mui/material';
+import { Box, Typography, Grid, Paper, Button } from '@mui/material';
 import Header from './Header';
 import PastSessions from './PastSessions';
+import { useHistory } from 'react-router-dom';
 
 const JoinedStudyGroupPage = () => {
+  const history = useHistory();
   const groupName = 'CS 2810 Study Group';
+
+  const handleLaunchStudyBuddy = () => {
+    history.push('/create-group');
+  };
 
   return (
     <Box sx={{ p: 4 }}>
@@ -15,6 +21,7 @@ const JoinedStudyGroupPage = () => {
             <Typography variant="h4" component="h2" gutterBottom>Details</Typography>
             <Typography>Description: 2nd Year Study Group for OOD</Typography>
             <Typography>Course: CS 3500 OOD</Typography>
+            <Typography>Members: John, Rachel</Typography>
           </Box>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
@@ -23,6 +30,12 @@ const JoinedStudyGroupPage = () => {
           </Paper>
         </Grid>
       </Grid>
+      <Box sx={{ display: 'flex', justifyContent: 'center', position: 'fixed', bottom: 20, left: 0, right: 0 }}> {/* Adjusted for fixed position */}
+        <Button variant="contained" color="primary" onClick={handleLaunchStudyBuddy}
+        sx={{ my: 2, py: 2, fontSize: '1.5rem', width: '300px', textTransform: 'none' }}>
+          Launch Study Buddy
+        </Button>
+      </Box>
     </Box>
   );
 };
