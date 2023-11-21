@@ -7,6 +7,9 @@ Welcome to the Study Buddies website repository. This web application is designe
 Before you begin, ensure you have the following installed:
 - [Node.js](https://nodejs.org/en/) which includes `npm` (Node Package Manager).
 
+Note that this code has only been tested and run for Mac and not Windows/Linux,
+however both should work as expected.
+
 ## Getting Started
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
