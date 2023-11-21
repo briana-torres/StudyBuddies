@@ -31,12 +31,17 @@ cd project-directory-location
 npm install
 ```
 
-4. Ensure that you have the Material-UI library installed:
+4. Install React
+```bash
+npm install react-scripts --save
+```
+
+5. Ensure that you have the Material-UI library installed:
 ```bash
 npm install @mui/material @emotion/react @emotion/styled
 ```
 
-5. Additionally, install Material-UI icons package:
+6. Additionally, install Material-UI icons package:
 ```bash
 npm install @mui/icons-material
 ```
