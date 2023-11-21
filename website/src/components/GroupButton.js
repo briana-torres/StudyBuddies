@@ -6,7 +6,7 @@ const GroupButton = ({ title, onClick }) => {
     <Button
       variant="contained"
       onClick={onClick}
-      sx={{ my: 2, py: 3, fontSize: '2rem', width: '250px', textTransform: 'none' }}
+      sx={{ my: 2, py: 2, fontSize: '2rem', width: '250px', textTransform: 'none' }}
     >
       {title}
     </Button>
