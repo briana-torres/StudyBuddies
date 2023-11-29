@@ -46,6 +46,12 @@ npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material
 ```
 
+7. Finally install react-router in website subdirectory
+```bash
+cd website
+npm install --save react-router-dom
+```
+
 ### Running the Application
 
 Navigate to the website directory:
