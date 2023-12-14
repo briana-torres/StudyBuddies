@@ -75,7 +75,7 @@ const GroupHomePage = () => {
   };  
 
   const handleStartSessionClick = () => {
-    history.push('/study-session');
+    history.push('/start-study-buddy');
   };
 
   if (!group) {

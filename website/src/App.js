@@ -11,7 +11,7 @@ import CreateGroupPage from './pages/CreateGroupPage';
 import CreatedSuccessPage from './pages/CreatedSuccessPage';
 import JoinedStudyGroupPage from './pages/JoinedStudyGroupPage';
 import StudySessionPage from './pages/StudySessionPage';
-import LaunchStudyBuddyPage from './pages/LaunchStudyBuddyPage';
+import StartStudyBuddyPage from './pages/StartStudyBuddyPage';
 import LaunchSuccessPage from './pages/LaunchSuccessPage';
 import AboutUsPage from './pages/AboutUsPage';
 
@@ -30,7 +30,7 @@ function App() {
         <Route path="/created-success" component={CreatedSuccessPage} />
         <Route path="/joined-study-group" component={JoinedStudyGroupPage} />
         <Route path="/study-session" component={StudySessionPage} />
-        <Route path="/launch-study-buddy" component={LaunchStudyBuddyPage} />
+        <Route path="/start-study-buddy" component={StartStudyBuddyPage} />
         <Route path="/launch-success" component={LaunchSuccessPage} />
         <Route path="/about-us" component={AboutUsPage} />
       </Switch>

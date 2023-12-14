@@ -3,7 +3,7 @@ import { Box, Typography, TextField, IconButton, Container, AppBar, Toolbar, But
 import CloseIcon from '@mui/icons-material/Close'; // Import CloseIcon
 import { useHistory } from 'react-router-dom';
 
-const LaunchStudyBuddyPage = () => {
+const StartStudyBuddyPage = () => {
   let history = useHistory(); 
 
   // State for selected members
@@ -27,13 +27,13 @@ const LaunchStudyBuddyPage = () => {
 
   return (
     <>
-      <AppBar position="static" color="default" elevation={0}>
+      <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar>
           <IconButton edge="start" color="inherit" aria-label="exit" onClick={handleExitClick}>
             <CloseIcon />
           </IconButton>
           <Typography variant="h4" style={{ flexGrow: 1, textAlign: 'center' }}>
-            Launch Study Buddy
+            Create Study Buddy Session
           </Typography>
         </Toolbar>
       </AppBar>
@@ -67,12 +67,12 @@ const LaunchStudyBuddyPage = () => {
       </Container>
       <Box sx={{ display: 'flex', justifyContent: 'center', position: 'fixed', bottom: 20, left: 0, right: 0 }}> 
         <Button variant="contained" color="primary" onClick={handleLaunchStudyBuddy}
-        sx={{ my: 2, py: 2, fontSize: '1.5rem', width: '300px', textTransform: 'none' }}>
-          Launch Study Buddy
+        sx={{ my: 2, py: 2, fontSize: '1.5rem', width: '400px', textTransform: 'none' }}>
+          Start Study Buddy Session
         </Button>
       </Box>
     </>
   );
 };
 
-export default LaunchStudyBuddyPage;
+export default StartStudyBuddyPage;

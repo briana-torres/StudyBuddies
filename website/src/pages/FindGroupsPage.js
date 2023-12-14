@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, TextField, List, ListItem, ListItemText, Divider, Button } from '@mui/material';
+import { Box, TextField, Typography, List, ListItem, ListItemText, Divider, Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 
@@ -10,21 +10,9 @@ const FindGroupsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    // Initialize or retrieve study groups from local storage
     const storedGroups = JSON.parse(localStorage.getItem('studyGroups')) || [];
-    if (!storedGroups.length) {
-      const initialGroups = [
-        { name: 'CS 2810 Study Group', description: 'Group for CS 2810 students to study together.', course: 'CS 2810', maxGroupSize: 5, members: [], pastSessions: [], id: 1 },
-        { name: 'Fundies II', description: 'A supportive group for Fundamentals of Computer Science II.', course: 'CS 2510', maxGroupSize: 4, members: [], pastSessions: [], id: 2 },
-        { name: 'CS 3500 OOD', description: 'Object-Oriented Design group discussions and study sessions.', course: 'CS 3500', maxGroupSize: 3, members: [], pastSessions: [], id: 3 },
-      ];
-      localStorage.setItem('studyGroups', JSON.stringify(initialGroups));
-      setStudyGroups(initialGroups);
-      setFilteredGroups(initialGroups);
-    } else {
-      setStudyGroups(storedGroups);
-      setFilteredGroups(storedGroups);
-    }
+    setStudyGroups(storedGroups);
+    setFilteredGroups(storedGroups);
   }, []);
 
   useEffect(() => {
@@ -51,11 +39,14 @@ const FindGroupsPage = () => {
   return (
     <Box sx={{ p: 4, display: 'flex', flexDirection: 'column' }}>
       <Header title="Find Groups" />
+      <Typography variant="h6" component="h2" gutterBottom sx={{ textAlign: 'center', mt: 3 }}>
+       Search or scroll through the study groups below, click to navigate to the group homepage and join a group!
+      </Typography>
       <TextField
         placeholder="Search for study groups..."
         variant="outlined"
         fullWidth
-        sx={{ mb: 2, mt: 6 }}
+        sx={{ mb: 2, mt: 4 }}
         value={searchTerm}
         onChange={handleSearchChange}
       />
@@ -63,7 +54,7 @@ const FindGroupsPage = () => {
         {filteredGroups.map(group => (
           <React.Fragment key={group.id}>
             <ListItem button onClick={() => handleGroupClick(group.id)}>
-              <ListItemText primary={group.name} secondary={group.course || "No course specified"} />
+              <ListItemText primary={group.name} secondary={group.description} />
             </ListItem>
             <Divider />
           </React.Fragment>

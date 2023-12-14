@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, TextField, List, ListItem, ListItemText, Divider } from '@mui/material';
+import { Box, TextField, Typography, List, ListItem, ListItemText, Divider } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 
@@ -41,19 +41,22 @@ const MyGroupsPage = () => {
   return (
     <Box sx={{ p: 4, display: 'flex', flexDirection: 'column' }}>
       <Header title="My Groups" />
+      <Typography variant="h6" component="h2" gutterBottom sx={{ textAlign: 'center', mt: 3 }}>
+       Search for your study groups below, click to navigate to the group homepage!
+      </Typography>
       <TextField
         placeholder="Search for study groups..."
         variant="outlined"
         fullWidth
         value={searchTerm}
         onChange={handleSearchChange}
-        sx={{ mb: 2, mt: 6}}
+        sx={{ mb: 2, mt: 4}}
       />
       <List sx={{ overflow: 'auto', maxHeight: 300, mb: 2 }}>
         {filteredGroups.map((group) => (
           <React.Fragment key={group.id}>
             <ListItem button onClick={() => handleGroupClick(group.id)}>
-              <ListItemText primary={group.name} />
+              <ListItemText primary={group.name} secondary={group.description}/>
             </ListItem>
             <Divider />
           </React.Fragment>
