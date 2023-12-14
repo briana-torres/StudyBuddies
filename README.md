@@ -1,6 +1,6 @@
-# Study Buddies Website
+# The Study Community
 
-Welcome to the Study Buddies website repository. This web application is designed to help minority CS students at Northeastern find and join study groups for their courses.
+Welcome to The Study Community website repository. This web application is designed to help minority CS students at Northeastern find and join study groups for their courses.
 
 ## Prerequisites
 
