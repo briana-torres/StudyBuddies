@@ -5,7 +5,7 @@ Welcome to The Study Community website repository. This web application is desig
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
-- [Node.js](https://nodejs.org/en/) which includes `npm` (Node Package Manager).
+- [Node.js Version 20.10.0](https://nodejs.org/en/) which includes `npm` (Node Package Manager).
 
 Note that this code has only been tested and run for Mac and not Windows/Linux,
 however both should work as expected.
