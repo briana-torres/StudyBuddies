@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { List, ListItem, ListItemText, Paper, Typography, Box } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 
-const sessions = [
-  { id: 1, title: 'CS 2810 Study Group', date: '10/10/2023', duration: '30min' },
-];
-
 const PastSessions = () => {
   const history = useHistory();
+  const [userSessions, setUserSessions] = useState([]);
+
+  useEffect(() => {
+    const currentUsername = localStorage.getItem('currentUser');
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    const currentUserData = users[currentUsername];
+    setUserSessions(currentUserData.sessions || []);
+  }, []);
 
   const handleSessionClick = (session) => {
     history.push('/study-session');
@@ -20,14 +24,22 @@ const PastSessions = () => {
       </Typography>
       <Paper sx={{ maxHeight: 300, overflow: 'auto', border: '1px solid grey', mt: 3}}>
         <List>
-          {sessions.map((session) => (
-            <ListItem button key={session.id} onClick={() => handleSessionClick(session)}>
+          {userSessions.length > 0 ? (
+            userSessions.map((session) => (
+              <ListItem button key={session.id} onClick={() => handleSessionClick(session)}>
+                <ListItemText
+                  primary={session.title}
+                  secondary={`${session.date} - ${session.duration}`}
+                />
+              </ListItem>
+            ))
+          ) : (
+            <ListItem>
               <ListItemText
-                primary={session.title}
-                secondary={`${session.date} - ${session.duration}`}
+                primary="Start studying to see Study Buddy Sessions!"
               />
             </ListItem>
-          ))}
+          )}
         </List>
       </Paper>
     </Box>
@@ -35,6 +47,3 @@ const PastSessions = () => {
 };
 
 export default PastSessions;
-
-
-

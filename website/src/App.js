@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import FindGroupsPage from './pages/FindGroupsPage';
 import MyGroupsPage from './pages/MyGroupsPage';
-import StudyGroupPage from './pages/StudyGroupPage';
+import GroupHomePage from './pages/GroupHomePage';
 import JoinedSuccessPage from './pages/JoinedSuccessPage';
 import CreateGroupPage from './pages/CreateGroupPage';
 import CreatedSuccessPage from './pages/CreatedSuccessPage';
@@ -24,7 +24,7 @@ function App() {
         <Route path="/profile" component={ProfilePage} />
         <Route path="/find-groups" component={FindGroupsPage} />
         <Route path="/my-groups" component={MyGroupsPage} />
-        <Route path="/study-group" component={StudyGroupPage} />
+        <Route path="/group-homepage/:groupId" component={GroupHomePage} />
         <Route path="/joined-success" component={JoinedSuccessPage} />
         <Route path="/create-group" component={CreateGroupPage} />
         <Route path="/created-success" component={CreatedSuccessPage} />
