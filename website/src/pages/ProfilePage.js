@@ -1,28 +1,31 @@
 import React from 'react';
 import { Box, Typography, TextField, IconButton, Container, AppBar, Toolbar } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useHistory } from 'react-router-dom';
 
 const ProfilePage = () => {
   let history = useHistory(); 
-
-  const handleHomeClick = () => {
-    history.push('/');
+  
+  const handleBack = () => {
+    history.goBack();
   };
 
   return (
     <>
-      <AppBar position="static" color="default" elevation={0}>
+      <AppBar position="static" color="transparent" elevation={0} sx={{mt: 2}}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="home" onClick={handleHomeClick}>
+          {/* <IconButton edge="start" color="inherit" aria-label="home" onClick={handleHomeClick}>
             <HomeIcon />
-          </IconButton>
-          <Typography variant="h4" style={{ flexGrow: 1, textAlign: 'center' }}>
+          </IconButton> */}
+          <IconButton onClick={handleBack} sx={{ visibility: 'visible' }}>
+          <ArrowBackIcon fontSize="large" />
+        </IconButton>
+          <Typography variant="h4" component="h3" style={{ flexGrow: 1, textAlign: 'center' }}>
             Account Information
           </Typography>
         </Toolbar>
       </AppBar>
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" sx={{mt: 4}}>
         {/* The rest of your form */}
         <Box component="form" sx={{'& > :not(style)': { m: 1 } }}>
           <TextField label="Name" variant="outlined" fullWidth />

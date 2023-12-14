@@ -4,6 +4,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useHistory } from 'react-router-dom';
+import InfoIcon from '@mui/icons-material/Info';
 
 const Header = ({ title }) => {
   let history = useHistory();
@@ -20,8 +21,12 @@ const Header = ({ title }) => {
     history.goBack();
   };
 
+  const handleInfoClick = () => {
+    history.push('/info');
+  };
+
   return (
-    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <Toolbar sx={{ width: '98%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <Box sx={{ display: 'flex' }}>
         <IconButton onClick={handleBack} sx={{ visibility: 'visible' }}>
           <ArrowBackIcon fontSize="large" />
@@ -37,6 +42,9 @@ const Header = ({ title }) => {
       <Box sx={{ display: 'flex' }}>
         <IconButton onClick={handleHomeClick}>
           <HomeIcon fontSize="large" />
+        </IconButton>
+        <IconButton onClick={handleInfoClick}>
+          <InfoIcon fontSize="large" />
         </IconButton>
         <IconButton onClick={handleProfileClick}>
           <AccountCircleIcon fontSize="large" />

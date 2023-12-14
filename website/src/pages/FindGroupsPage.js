@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, TextField, List, ListItem, ListItemText, Divider, Button } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-import Header from './Header';
+import Header from '/Users/briana/Desktop/HCI/StudyBuddy/StudyBuddy/website/src/components/Header.js';
 
 const FindGroupsPage = () => {
   const history = useHistory();

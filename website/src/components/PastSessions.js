@@ -15,10 +15,10 @@ const PastSessions = () => {
 
   return (
     <Box sx={{ width: '100%', maxWidth: '360px' }}>
-      <Typography variant="h4" component="h3" gutterBottom>
-        Past Study Sessions
+      <Typography variant="h4" component="h3" gutterBottom sx={{ textAlign: 'center'}}>
+        Study Buddy Sessions
       </Typography>
-      <Paper sx={{ maxHeight: 300, overflow: 'auto', border: '1px solid grey', mb: 2 }}>
+      <Paper sx={{ maxHeight: 300, overflow: 'auto', border: '1px solid grey', mt: 3}}>
         <List>
           {sessions.map((session) => (
             <ListItem button key={session.id} onClick={() => handleSessionClick(session)}>
