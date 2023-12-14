@@ -21,7 +21,7 @@ https://briana-torres.github.io/TheStudyCommunity
 
 1. Clone the repository to your local machine:
 ```bash
-git clone https://github.com/briana-torres/StudyBuddies.git
+git clone https://github.com/briana-torres/TheStudyCommunity.git
 ```
 
 2. Navigate to the project directory:
