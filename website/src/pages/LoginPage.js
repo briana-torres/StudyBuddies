@@ -78,16 +78,23 @@ function LoginPage() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
   return (
-    <Container sx={{ width: '98%', display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', justifyContent: 'center' }}>
-      <Typography component="h1" variant="h1" gutterBottom sx={{textAlign: 'center', fontWeight: 'bold', fontSize: '5rem'}}>
+    <Container sx={{ width: '100%', mt: 8 }}>
+      <Typography component="h1" variant="h2" gutterBottom sx={{textAlign: 'center', fontWeight: 'bold', fontSize: '5rem', mb: 6 }}>
         The Study Community
       </Typography>
-      <Typography component="h2" variant="h5" sx={{ mb: 4 }}>
-        {isLogin ? 'Login' : 'Sign Up'}
-      </Typography>
-      <Box component="form" onSubmit={isLogin ? handleLogin : handleSignUp} sx={{ width: '50%', mt: 1 }}>
+      <Box
+        component="form"
+        onSubmit={isLogin ? handleLogin : handleSignUp}
+        sx={{
+          width: '100%', // Use maximum width of the container
+          maxWidth: 500, // Set a max width for larger screens
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          mx: 'auto', // This will center the Box in the container
+        }}
+      >
         <TextField
           margin="normal"
           required
