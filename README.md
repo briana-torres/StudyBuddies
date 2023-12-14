@@ -14,6 +14,9 @@ however both should work as expected.
 
 Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
+## Live Site
+https://briana-torres.github.io/TheStudyCommunity
+
 ### Installation
 
 1. Clone the repository to your local machine:
