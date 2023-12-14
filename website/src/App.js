@@ -13,6 +13,7 @@ import JoinedStudyGroupPage from './pages/JoinedStudyGroupPage';
 import StudySessionPage from './pages/StudySessionPage';
 import LaunchStudyBuddyPage from './pages/LaunchStudyBuddyPage';
 import LaunchSuccessPage from './pages/LaunchSuccessPage';
+import AboutUsPage from './pages/AboutUsPage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/study-session" component={StudySessionPage} />
         <Route path="/launch-study-buddy" component={LaunchStudyBuddyPage} />
         <Route path="/launch-success" component={LaunchSuccessPage} />
+        <Route path="/about-us" component={AboutUsPage} />
       </Switch>
     </Router>
   );

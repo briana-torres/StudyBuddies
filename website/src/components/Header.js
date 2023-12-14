@@ -22,7 +22,7 @@ const Header = ({ title }) => {
   };
 
   const handleInfoClick = () => {
-    history.push('/info');
+    history.push('/about-us');
   };
 
   return (
@@ -36,7 +36,7 @@ const Header = ({ title }) => {
           <AccountCircleIcon fontSize="large" />
         </IconButton>
       </Box>
-      <Typography variant="h2" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
+      <Typography variant="h2" component="div" sx={{ fontWeight: 'bold', flexGrow: 1, textAlign: 'center' }}>
         {title}
       </Typography>
       <Box sx={{ display: 'flex' }}>

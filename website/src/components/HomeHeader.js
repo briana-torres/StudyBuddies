@@ -12,7 +12,7 @@ const HomeHeader = ({ title }) => {
   };
 
   const handleInfoClick = () => {
-    history.push('/info');
+    history.push('/about-us');
   };
 
   return (
