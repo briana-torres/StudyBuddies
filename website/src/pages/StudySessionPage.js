@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography, Grid, Paper, List, ListItem, ListItemText } from '@mui/material';
-import Header from '/Users/briana/Desktop/HCI/StudyBuddy/StudyBuddy/website/src/components/Header.js';
+import Header from '../components/Header';
 
 const notes = [
   { id: 1, note: 'given a symmetric matrix, you should be able to decompose a matrix A into 3 separate matrices.', author: 'John'},

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Grid, Paper, Button } from '@mui/material';
-import Header from '/Users/briana/Desktop/HCI/StudyBuddy/StudyBuddy/website/src/components/Header.js';
-import PastSessions from '/Users/briana/Desktop/HCI/StudyBuddy/StudyBuddy/website/src/components/PastSessions.js';
+import Header from '../components/Header';
+import PastSessions from '../components/PastSessions';
 import { useHistory } from 'react-router-dom';
 
 const JoinedStudyGroupPage = () => {
