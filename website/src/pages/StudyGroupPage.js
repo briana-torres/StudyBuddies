@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Typography, Grid } from '@mui/material';
 import { useHistory } from 'react-router-dom';
-import Header from './Header';
+import Header from './components/Header';
 
 const StudyGroupPage = () => {
   const history = useHistory();
