@@ -10,7 +10,7 @@ const Header = ({ title }) => {
   let history = useHistory();
 
   const handleHomeClick = () => {
-    history.push('/');
+    history.push('/home');
   };
 
   const handleProfileClick = () => {
