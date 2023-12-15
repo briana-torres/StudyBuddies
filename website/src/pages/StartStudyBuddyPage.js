@@ -103,6 +103,9 @@ const StartStudyBuddyPage = () => {
           </Typography>
         </Toolbar>
       </AppBar>
+      <Typography variant="h6" component="h2" gutterBottom sx={{ textAlign: 'center', mt: 3 }}>
+       Create a new study buddy session by setting the session name, members, and optional reminder settings.
+      </Typography>
       <Container maxWidth="sm">
         <Box component="form" sx={{ mt: 4, '& > :not(style)': { m: 2 } }}>
           <TextField 
