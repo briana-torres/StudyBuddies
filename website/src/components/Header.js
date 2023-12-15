@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Typography, IconButton, Toolbar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useHistory } from 'react-router-dom';
 import InfoIcon from '@mui/icons-material/Info';
 
@@ -17,10 +16,6 @@ const Header = ({ title }) => {
     history.push('/profile');
   };
 
-  const handleBack = () => {
-    history.goBack();
-  };
-
   const handleInfoClick = () => {
     history.push('/about-us');
   };
@@ -28,9 +23,6 @@ const Header = ({ title }) => {
   return (
     <Toolbar sx={{ width: '98%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <Box sx={{ display: 'flex' }}>
-        <IconButton onClick={handleBack} sx={{ visibility: 'visible' }}>
-          <ArrowBackIcon fontSize="large" />
-        </IconButton>
         {/* Invisible placeholder to balance the title */}
         <IconButton sx={{ visibility: 'hidden' }}>
           <AccountCircleIcon fontSize="large" />
