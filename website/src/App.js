@@ -30,7 +30,7 @@ function App() {
         <Route path="/created-success" component={CreatedSuccessPage} />
         <Route path="/joined-study-group" component={JoinedStudyGroupPage} />
         <Route path="/study-session" component={StudySessionPage} />
-        <Route path="/start-study-buddy" component={StartStudyBuddyPage} />
+        <Route path="/start-study-buddy/:groupId" component={StartStudyBuddyPage} />
         <Route path="/launch-success" component={LaunchSuccessPage} />
         <Route path="/about-us" component={AboutUsPage} />
       </Switch>

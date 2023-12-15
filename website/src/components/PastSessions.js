@@ -8,13 +8,21 @@ const PastSessions = () => {
 
   useEffect(() => {
     const currentUsername = localStorage.getItem('currentUser');
+    const allSessions = JSON.parse(localStorage.getItem('allSessions')) || [];
     const users = JSON.parse(localStorage.getItem('users')) || {};
     const currentUserData = users[currentUsername];
-    setUserSessions(currentUserData.sessions || []);
+
+    // Get detailed session data for the current user
+    if (currentUserData && currentUserData.sessions) {
+      const detailedSessions = currentUserData.sessions.map(sessionId =>
+        allSessions.find(session => session.id === sessionId)
+      ).filter(session => session != null); // Filter out any undefined entries
+      setUserSessions(detailedSessions);
+    }
   }, []);
 
-  const handleSessionClick = (session) => {
-    history.push('/study-session');
+  const handleSessionClick = (sessionId) => {
+    history.push(`/study-session/${sessionId}`);
   };
 
   return (
@@ -22,14 +30,14 @@ const PastSessions = () => {
       <Typography variant="h4" component="h3" gutterBottom sx={{ textAlign: 'center'}}>
         Study Buddy Sessions
       </Typography>
-      <Paper sx={{ maxHeight: 300, overflow: 'auto', border: '1px solid grey', mt: 3}}>
+      <Paper sx={{ maxHeight: 300, overflow: 'auto', border: '1px solid grey', mt: 3 }}>
         <List>
           {userSessions.length > 0 ? (
             userSessions.map((session) => (
-              <ListItem button key={session.id} onClick={() => handleSessionClick(session)}>
+              <ListItem button key={session.id} onClick={() => handleSessionClick(session.id)}>
                 <ListItemText
-                  primary={session.title}
-                  secondary={`${session.date} - ${session.duration}`}
+                  primary={session.name}
+                  secondary={`${new Date(session.date).toLocaleDateString()} - ${new Date(session.startTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}`}
                 />
               </ListItem>
             ))

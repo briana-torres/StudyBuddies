@@ -75,7 +75,7 @@ const GroupHomePage = () => {
   };  
 
   const handleStartSessionClick = () => {
-    history.push('/start-study-buddy');
+    history.push(`/start-study-buddy/${groupId}`);
   };
 
   if (!group) {
@@ -147,7 +147,7 @@ const GroupHomePage = () => {
             }} 
             variant="contained" 
             color="primary" 
-            onClick={hasJoined ? handleStartSessionClick : handleJoinClick}
+            onClick={hasJoined ? () => handleStartSessionClick() : handleJoinClick}
           >
             {hasJoined ? 'Start Study Buddy Session' : 'Join Group'}
           </Button>
