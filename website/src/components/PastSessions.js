@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { List, ListItem, ListItemText, Paper, Typography, Box } from '@mui/material';
+import { List, ListItem, ListItemText, Paper, Typography, Box, IconButton, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useHistory } from 'react-router-dom';
 
 const PastSessions = () => {
   const history = useHistory();
   const [userSessions, setUserSessions] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [selectedSessionId, setSelectedSessionId] = useState(null);
 
   useEffect(() => {
     const currentUsername = localStorage.getItem('currentUser');
@@ -25,6 +28,38 @@ const PastSessions = () => {
     history.push(`/study-session/${sessionId}`);
   };
 
+  const handleDeleteClick = (sessionId, event) => {
+    event.stopPropagation();  // Prevent triggering handleSessionClick
+    setOpenDialog(true);
+    setSelectedSessionId(sessionId);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  const handleConfirmDelete = () => {
+    const currentUsername = localStorage.getItem('currentUser');
+    const users = JSON.parse(localStorage.getItem('users')) || {};
+    const allSessions = JSON.parse(localStorage.getItem('allSessions')) || [];
+
+    // Remove session from allSessions
+    const updatedAllSessions = allSessions.filter(session => session.id !== selectedSessionId);
+
+    // Remove session id from the current user's sessions
+    const updatedUserSessions = users[currentUsername].sessions.filter(id => id !== selectedSessionId);
+    users[currentUsername].sessions = updatedUserSessions;
+
+    // Update localStorage
+    localStorage.setItem('allSessions', JSON.stringify(updatedAllSessions));
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Update state to reflect deletion
+    setUserSessions(prev => prev.filter(session => session.id !== selectedSessionId));
+    
+    handleCloseDialog();
+  };
+
   return (
     <Box sx={{ width: '100%', maxWidth: '360px' }}>
       <Typography variant="h4" component="h3" gutterBottom sx={{ textAlign: 'center'}}>
@@ -39,6 +74,9 @@ const PastSessions = () => {
                   primary={session.name}
                   secondary={`${new Date(session.date).toLocaleDateString()} - ${new Date(session.startTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}`}
                 />
+                <IconButton onClick={(e) => handleDeleteClick(session.id, e)}>
+                  <DeleteIcon />
+                </IconButton>
               </ListItem>
             ))
           ) : (
@@ -50,6 +88,29 @@ const PastSessions = () => {
           )}
         </List>
       </Paper>
+
+      {/* Confirmation Dialog */}
+      <Dialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Confirm Deletion"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete this session?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleConfirmDelete} color="primary" autoFocus>
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };

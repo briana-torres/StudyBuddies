@@ -6,13 +6,10 @@ import ProfilePage from './pages/ProfilePage';
 import FindGroupsPage from './pages/FindGroupsPage';
 import MyGroupsPage from './pages/MyGroupsPage';
 import GroupHomePage from './pages/GroupHomePage';
-import JoinedSuccessPage from './pages/JoinedSuccessPage';
 import CreateGroupPage from './pages/CreateGroupPage';
-import CreatedSuccessPage from './pages/CreatedSuccessPage';
-import JoinedStudyGroupPage from './pages/JoinedStudyGroupPage';
 import StudySessionPage from './pages/StudySessionPage';
 import StartStudyBuddyPage from './pages/StartStudyBuddyPage';
-import LaunchSuccessPage from './pages/LaunchSuccessPage';
+import StudyBuddyPage from './pages/StudyBuddyPage';
 import AboutUsPage from './pages/AboutUsPage';
 
 function App() {
@@ -25,13 +22,10 @@ function App() {
         <Route path="/find-groups" component={FindGroupsPage} />
         <Route path="/my-groups" component={MyGroupsPage} />
         <Route path="/group-homepage/:groupId" component={GroupHomePage} />
-        <Route path="/joined-success" component={JoinedSuccessPage} />
         <Route path="/create-group" component={CreateGroupPage} />
-        <Route path="/created-success" component={CreatedSuccessPage} />
-        <Route path="/joined-study-group" component={JoinedStudyGroupPage} />
-        <Route path="/study-session" component={StudySessionPage} />
+        <Route path="/study-session/:sessionId" component={StudySessionPage} />
         <Route path="/start-study-buddy/:groupId" component={StartStudyBuddyPage} />
-        <Route path="/launch-success" component={LaunchSuccessPage} />
+        <Route path="/study-buddy/:groupId/:sessionId" component={StudyBuddyPage} />
         <Route path="/about-us" component={AboutUsPage} />
       </Switch>
     </Router>

@@ -1,39 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Typography, Button, Container, Grid, Menu, MenuItem, List, ListItem} from '@mui/material';
-import Header from '../components/Header';
+import { Box, Typography, Snackbar, Container, Button, Grid, Menu, MenuItem, List } from '@mui/material';
+import NotesComponent from '../components/Notes';
+import MuiAlert from '@mui/material/Alert';
+import { useHistory } from 'react-router-dom';
 
-const StudySessionPage = () => {
+const StudyBuddyPage = () => {
+  const history = useHistory();
   const { sessionId } = useParams();
+  const { groupId } = useParams();
   const [session, setSession] = useState(null);
   const [membersDetails, setMembersDetails] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   useEffect(() => {
     const allSessions = JSON.parse(localStorage.getItem('allSessions')) || [];
     const users = JSON.parse(localStorage.getItem('users')) || {};
     const sessionDetails = allSessions.find(s => s.id === parseInt(sessionId, 10));
-
+    
     if (sessionDetails) {
       setSession(sessionDetails);
       const memberUsernames = sessionDetails.members;
       const memberNames = memberUsernames.map(username => users[username] ? users[username].name : "Unknown");
       setMembersDetails(memberNames);
     }
+
+    if (sessionDetails && sessionDetails.reminderMessage && sessionDetails.reminderFrequency) {
+      const intervalId = setInterval(() => {
+        setOpenSnackbar(true);
+      }, sessionDetails.reminderFrequency * 60000); // Convert minutes to milliseconds
+
+      return () => clearInterval(intervalId); // Clear interval on component unmount
+    }
+
   }, [sessionId]);
 
   const handleMemberClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const formatDateTime = (isoString) => {
-    if (!isoString) return 'Not available';
-    const dateTime = new Date(isoString);
-    return dateTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
+  const handleEndSession = () => {
+    const allSessions = JSON.parse(localStorage.getItem('allSessions')) || [];
+    const updatedSessions = allSessions.map(s => {
+      if (s.id === parseInt(sessionId, 10)) {
+        return { ...s, endTime: new Date().toISOString() };
+      }
+      return s;
+    });
+    localStorage.setItem('allSessions', JSON.stringify(updatedSessions));
+    history.push(`/group-homepage/${groupId}`);
   };
 
   if (!session) {
@@ -42,14 +69,14 @@ const StudySessionPage = () => {
 
   return (
     <Box sx={{ p: 4 }}>
-      <Header title={session.name} />
+      <Typography variant="h2" component="div" sx={{ fontWeight: 'bold', flexGrow: 1, textAlign: 'center' }}>
+       {session.name}
+      </Typography>
       <Container maxWidth="lg" sx={{ mt: 8 }}>
         <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12} md={6}>
             <Box sx={{ textAlign: 'left' }}>
               <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'center' }}>Session Details</Typography>
-              <Typography gutterBottom>Start Time: {formatDateTime(session.startTime)}</Typography>
-              <Typography gutterBottom>End Time: {formatDateTime(session.endTime)}</Typography>
               <Typography gutterBottom>Reminder Message: {session.reminderMessage || 'None'}</Typography>
               <Typography gutterBottom>Reminder Frequency: {session.reminderFrequency || 'None'}</Typography>
               <Typography gutterBottom>Members: {membersDetails.length}</Typography>
@@ -80,24 +107,30 @@ const StudySessionPage = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography variant="h4" component="h2" gutterBottom sx={{ textAlign: 'center' }}>Notes</Typography>
-              <List>
-                {session.notes && session.notes.length > 0 ? (
-                  session.notes.map((note, index) => (
-                    <ListItem key={index} divider sx={{ my: 1, mx: 2, marginRight: 6 }}>
-                      <Typography sx={{ wordBreak: 'break-word' }}>
-                        {note}
-                      </Typography>
-                    </ListItem>
-                  ))
-                ) : (
-                  <Typography sx={{ textAlign: 'center', my: 2 }}>No notes to display</Typography>
-                )}
-              </List>
+            <NotesComponent sessionId={session.id} />
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+              {/* Map through notes here */}
+            </List>
           </Grid>
         </Grid>
+        <Box sx={{ display: 'flex', justifyContent: 'center', position: 'fixed', bottom: 40, left: 0, right: 0 }}>
+          <Button 
+            sx={{ py: 2, fontSize: '1.5rem', textTransform: 'none' }}
+            variant="contained" 
+            color="primary" 
+            onClick={handleEndSession}
+          >
+            End Study Buddy Session
+          </Button>
+        </Box>
       </Container>
+      <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+        <MuiAlert onClose={handleCloseSnackbar} severity="info" sx={{ width: '100%' }}>
+          {session.reminderMessage}
+        </MuiAlert>
+      </Snackbar>
     </Box>
   );
 };
 
-export default StudySessionPage;
+export default StudyBuddyPage;

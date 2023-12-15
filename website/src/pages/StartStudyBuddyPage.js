@@ -46,6 +46,8 @@ const StartStudyBuddyPage = () => {
       return;
     }
 
+    const newSessionId = allSessions.length + 1;
+
     // Create the new session object
     const newSession = {
       name: sessionName,
@@ -57,7 +59,7 @@ const StartStudyBuddyPage = () => {
       reminderFrequency: reminderFrequency || null,
       notes: [],
       groupId: parseInt(groupId, 10),
-      id: allSessions.length + 1 // Unique id, assuming the length can serve as a unique identifier
+      id: newSessionId
     };
 
     // Save the new session
@@ -81,8 +83,8 @@ const StartStudyBuddyPage = () => {
     users[currentUsername] = currentUserData;
     localStorage.setItem('users', JSON.stringify(users));
 
-    // Redirect to the session page or a confirmation page
-    history.push('/launch-success');
+    // Redirect to Study Buddy page
+    history.push(`/study-buddy/${groupId}/${newSessionId}`);
   };
 
   const handleExitClick = () => {
@@ -96,7 +98,7 @@ const StartStudyBuddyPage = () => {
         <IconButton edge="start" color="inherit" aria-label="exit" onClick={handleExitClick}>
           <CloseIcon />
         </IconButton>
-          <Typography variant="h4" style={{ flexGrow: 1, textAlign: 'center' }}>
+          <Typography variant="h4" style={{ flexGrow: 1, textAlign: 'center'}}>
             Create Study Buddy Session
           </Typography>
         </Toolbar>
