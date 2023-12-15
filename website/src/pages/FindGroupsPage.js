@@ -10,10 +10,23 @@ const FindGroupsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const storedGroups = JSON.parse(localStorage.getItem('studyGroups')) || [];
+    let storedGroups = JSON.parse(localStorage.getItem('studyGroups'));
+  
+    if (!storedGroups || storedGroups.length === 0) {
+      // Initialize with some default groups
+      storedGroups = [
+        { name: 'CS 2810 Study Group', description: 'Group for CS 2810 students to study together.', course: 'CS 2810', maxGroupSize: 5, members: [], id: 1 },
+        { name: 'Fundies II', description: 'A supportive group for Fundamentals of Computer Science II.', course: 'CS 2510', maxGroupSize: 4, members: [], id: 2 },
+        { name: 'CS 3500 OOD', description: 'Object-Oriented Design group discussions and study sessions.', course: 'CS 3500', maxGroupSize: 3, members: [], id: 3 },
+      ];
+  
+      localStorage.setItem('studyGroups', JSON.stringify(storedGroups));
+    }
+  
     setStudyGroups(storedGroups);
     setFilteredGroups(storedGroups);
   }, []);
+  
 
   useEffect(() => {
     // Filter groups based on the search term
